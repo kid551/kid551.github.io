@@ -222,9 +222,15 @@ a:visited { color: #205caa; }
   letter-spacing: -1px;
 }
 
+.post-excerpt {
+	font-size: 14px;
+	font-style: italic;
+	color: gray;
+}
+
 .post-content blockquote {
     font-family: medium-content-slab-serif-font,Georgia,Cambria,"Times New Roman",Times,serif;
-	color: rgba(0,0,0,.6);
+	color: rgba(96, 96, 96, .6);
     border: none;
     padding: 0;
     padding-left: 50px;
