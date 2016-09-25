@@ -1,0 +1,17 @@
+# Site settings
+title: Terence Xie blog
+email: 
+description: "Terence Xie's blog complementing my another medium's posts."
+baseurl: ""
+url: "http://kid551.github.io"
+github_username:  kid551
+
+# Build settings
+markdown: kramdown
+permalink: pretty
+
+highlighter: rouge
+kramdown:
+  input: GFM
+  auto_ids: true
+  syntax_highlighter: rouge
