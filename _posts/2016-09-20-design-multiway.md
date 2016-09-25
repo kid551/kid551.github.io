@@ -1,7 +1,7 @@
 ---
 layout: post
 comments: true
-title:  "Design and multi-way solving"
+title:  "Design and multiway solving"
 excerpt: "relationships between design and multi-way solving"
 date:   2016-09-20
 mathjax: false
