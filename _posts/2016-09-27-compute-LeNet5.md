@@ -42,6 +42,7 @@ When I read the **II-B** part, I found there're lots of summary numbers about th
 
 This layer is much more special and differs from common convolutional layer or sampling(pooling) layer. As the paper says, it combines *neighborhoods at identical locations in a subset of $$S_2$$'s feature maps*, which means the neighborhoods in the 3rd dimension, layer dimension. If we image the $$S_2$$ feature maps are heaped from bottom to top. Then the **neighborhoods** means the local layers in the height dimension. So for each layer group in $$C_3$$, the filter size may be different.
 
+
 - number of training parameters:
   - number of parameters in **first** $$6$$ layers: $$((5\times 5)\times 3+1)$$ for each layer in this group (the $$3$$ indicates the number of neighbors), and the total $$6$$ layers require $$(25\times 3+1)\times 6=456$$ training parameters.
   - number of parameters in **next** $$6$$ layers(with the same above thinking): $$(25\times 4 + 1)\times 6=606$$ training parameters (the $$4$$ indicates the number of neighbors). 
