@@ -9,7 +9,7 @@ mathjax: true
 
 Yann LeCun's classic paper [Gradient-Based Learning Applied to Document Recognition](http://yann.lecun.com/exdb/publis/pdf/lecun-98.pdf) is worth every Deep Learning researcher for reading. It contains about 43 pages(except the reference pages), which is some kind of challenge for your patience and focus. Based on this price, you can get the detailed explanations and intuitive insights behind the deep learning development.
 
-When I read the **II-B** part, I found there're lots of summary numbers about the famous LeNet-5 network. But in this compact paper, it didn't give detailed steps for those computations. But I thinik these computing steps are interesting and are able to give us deeper understanding about how this network works. So, I'd like to complement those details.
+When I read the **II-B** part, I found there're lots of summary numbers about the famous LeNet-5 network. But in this compact paper, it didn't give detailed steps for those computations. But I think these computing steps are interesting and are able to give us deeper understanding about how this network works. So, I'd like to complement those details.
 
 
 ### Layer $$C_1$$ (6@28x28).
@@ -65,16 +65,28 @@ This layer is much more special and differs from common convolutional layer or s
 
 ### Layer $$F_6$$ (84@1x1).
 
+This layer contains the same classic neural network structure. It would get the input from all the layers from $$C_5$$, which means $$120$$ layers with $$1x1$$ size. And to generate the $$i^{th}$$ unit of $$F_6$$, it'll weight the $$120$$ elements in $$C_5$$ and add one bias. It means each unit of $$F_6$$ requires $$120+1=121$$ trainable parameters.
+
+And this weighted sum, called $$a_i$$ for unit $$i$$, will be passed to a sigmoid squashing function. This is the final result of unit $$i$$ in $$F_6$$: $$x_i=f(a_i)$$, where $$f(a)=A\ tanh(Sa)$$.
+
 - number of trainable parameters: $$(120+1)\times 84=10,164$$.
 - number of connections: $$10,164\times 1=10,164$$.
 
 
----
+### Output Layer
 
-to be continued ...
-
-
-
+Each unit in *OUTPUT* layer computes from the Euclidean distance between its input vector and its parameter vector: $$y_i=\sum_j (x_j - \omega_{ij})^2$$, where $$i$$ is index of output class, i.e. totally $$10$$ classes here, and $$j$$ is the index of input vector, i.e. totally $$84$$ units in $$F_6$$ here. Thus we can get:
+- number of trainable parameters: $$84\times 10=840$$
 
 
+**Remarks**: 
+
+1. The distance used above is called Euclidean Radical Basis Function (RBF).
+2. As the paper discussed, although there're lots of trainable parameters, but the value of each parameter is $$-1$$ or $$1$$. 
+3. As the component in $$F_6$$ is the result of sigmoid function, it's value range is $$[-1, 1]$$. So, the design of this *OUTPUT* layer is used as a *penalty term* measuring the fit between the *input pattern* and a *model* of the class associated with the RBF. *The further away is the input from the parameter vector, the larger is the RBF output*.
+4. The rationale of treating RBF as penalty term can be traced from probability theory. In probabilistic terms, the RBF output can be interpreted as the unnormalized negative log-likelihood of a Gaussian distribution in the space of configurations of layer $$F_6$$, which is the common definition of loss function.
+5. As the role of loss function, the configuration of $$F_6$$ is supposed to be as close as possible to parameters in RBF, which corresponds to the pattern's designed class. 
+6. The choice of RBF parameters is designed to represent a stylized image of the corresponding character class drawn on a $$7\times 12$$ bitmap (hence the number $$84$$).
+7. As it represents a **stylized** image, it's very powerful to recognize groups of objects, which have common confusable parts, especially there's post-processor to correct the confusion. On the other hand, it's not useful to recognized isolated object, which is full of special characters far from *stylized* trend.
+8. From a higher perspective, here we deal with the classier by using *distributed codes* (i.e. use the codes of pixels) instead of common-used one-hot encoding format. The reason is: **non-distributed** codes tend to behave **badly** when the *number of classes* is **larger** than a few dozens. That's why we often see one-hot encoding appearing in distinguish digits, instead of pictures. (Here the number of set ASCII, i.e. the number of classes, is already large enough for one-hot encoding.) 
 
