@@ -1,13 +1,24 @@
 ---
 layout: post
 comments: true
-title:  "Computations in LeNet-5"
-excerpt: "some computation work in LeNet-5."
+title:  "Notes in LeNet-5"
+excerpt: "notes of my understanding in LeNet-5."
 date:   2016-09-27
 mathjax: true
 ---
 
 Yann LeCun's classic paper [Gradient-Based Learning Applied to Document Recognition](http://yann.lecun.com/exdb/publis/pdf/lecun-98.pdf) is worth every Deep Learning researcher for reading. It contains about 43 pages(not counting the reference pages), which is some kind of challenge for your patience and focus. Based on this price, you can get the detailed explanations and intuitive insights behind the deep learning development.
+
+## Gap between $$E_{test}$$ and $$E_{train}$$
+
+This part references classic formula to explain the trade-off between $$E_{test}$$ and $$E_{train}$$, which is the trade-off between bias and variance, or synonym underfitting and overfitting.
+
+$$E_{test}-E_{train}=k(h/P)^{\alpha}$$
+
+where $$k$$ is one constant, $$h$$ is one index to evaluate the complexity of the model, $$P$$ is the number of training samples, $$\alpha$$ is a constant in range $$[0.5, 1.0]$$.
+
+
+## LeNet-5 Details
 
 When I read the **II-B** part, I found there're lots of summary numbers about the famous LeNet-5 network. But in this compact paper, it didn't give detailed steps for those computations. In my opinion these computing steps are interesting and are able to give us deeper understanding about how this network works. So, I'd like to complement those details.
 
