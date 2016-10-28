@@ -2,7 +2,7 @@
 layout: post
 comments: true
 title:  "One efficient way to compute functional differential"
-excerpt: ""
+excerpt: "easy way to do functional calculus"
 date:   2016-10-27
 mathjax: true
 ---
