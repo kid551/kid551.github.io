@@ -29,11 +29,13 @@ To achieve this goal, we need to estimate the conditional distribution $$P(Y \ve
 
 $$\hat{y} = \underset{y}{\operatorname{argmax}} P(Y=y \vert X) $$
 
+So the whole problem is boiled down to estimate the distribution. 
+
 ### Bayesian School
 
 In statistics, each estimation should be built under some hypothesis, i.e. the statistical parameters in the estimated distribution. We define $$\mathcal{H}$$ as the hypothesis space, and each concrete parameter as $$h\in\mathcal{H}$$.
 
-Once we've determined the distribution we want to predict, the remaining part is to estimate the hypothese $$h$$ in our chosen distribution. And how to deal with the hypothese estimation divides the **Bayesian** and **non-Bayesian** schools.
+Once we've determined which distribution we want to use for prediction, the remaining part is to estimate the hypothese $$h$$ in our chosen distribution. And how to deal with the hypothese estimation divides the **Bayesian** and **non-Bayesian** schools.
 
 - For *non-Bayesian* school members, they'll estimate the distribution hypothese $$\hat{h}$$ by **Maximum Likelihood Estimation** (*MLE*), i.e. $$\hat{h}=\underset{h}{\operatorname{argmax}} P(X \vert h)$$.
 - While for Bayesian school members, they think the maximum argument is not only relevant to the likelihood that $$X$$ being gotten under hypothese $$h$$, but **also** relevant to the probability that hypothese $$h$$ appearing, i.e. $$\hat{h}=\underset{h}{\operatorname{argmax}} P(X \vert h) P(h)$$, which is the so-called **Maximum A Posterior** (*MAP*) estimation.
