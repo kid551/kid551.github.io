@@ -9,7 +9,7 @@ mathjax: true
 
 Yann LeCun's classic paper [Gradient-Based Learning Applied to Document Recognition](http://yann.lecun.com/exdb/publis/pdf/lecun-98.pdf) is worth every Deep Learning researcher for reading. It contains about 43 pages(not counting the reference pages), which is some kind of challenge for your patience and focus. Based on this price, you can get the detailed explanations and intuitive insights behind the deep learning development.
 
-## Gap between $$E_{test}$$ and $$E_{train}$$
+## Gap between testing error and training error
 
 This part references classic formula to explain the trade-off between $$E_{test}$$ and $$E_{train}$$, which is the trade-off between bias and variance, or synonym underfitting and overfitting.
 
