@@ -29,6 +29,8 @@ To achieve this goal, we need to estimate the conditional distribution $$P(Y \ve
 
 $$\hat{y} = \underset{y}{\operatorname{argmax}} P(Y=y \vert X) $$
 
+### Bayesian School
+
 In statistics, each estimation should be built under some hypothesis, i.e. the statistical parameters in the estimated distribution. We define $$\mathcal{H}$$ as the hypothesis space, and each concrete parameter as $$h\in\mathcal{H}$$.
 
 Once we've determined the distribution we want to predict, the remaining part is to estimate the hypothese $$h$$ in our chosen distribution. And how to deal with the hypothese estimation divides the **Bayesian** and **non-Bayesian** schools.
