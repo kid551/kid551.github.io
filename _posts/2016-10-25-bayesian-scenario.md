@@ -45,5 +45,37 @@ It's easy to see that these two different schools only differ in one term $$P(h)
 
 ### Review of Naive Bayesian Classifier
 
+The process of naive Bayesian classifier is simple. But the point here is to dissect the *simple* algorithm under above probabilistic perspective. Let's go through the most common naive Bayesian algorithm first.
+
+Assume $$Y$$ is any discrete random variable, and $$X_1, \cdots, X_n$$ are the observed data. Our goal is to train a classifer that will output the probability distribution $$P(Y \vert X)$$ as we discussed above. The expression for the probability that $$Y$$ takes on its $$k^{th}$$ possible value based on Bayesian rule is
+
+$$P(Y=y_k \vert X_1, \cdots, X_n) = \frac{P(Y=y_k)P(X_1, \cdots, X_n \vert Y=y_k)}{\sum_j P(Y=y_j)P(X_1, \cdots, X_n \vert Y=y_j)}$$
+
+Then, use the naive Bayesian assumption that $$X_i$$ are conditionally independent given $$Y$$, we get
+
+$$P(Y=y_k \vert X_1, \cdots, X_n) = \frac{P(Y=y_k)\Pi_i P(X_i \vert Y=y_k)}{\sum_j P(Y=y_j)\Pi_i P(X_i \vert Y = y_j)}$$
+
+So the chosen $$Y$$ should be
+
+$$Y \leftarrow \underset{y_k}{\operatorname{argmax}}\frac{P(Y=y_k)\Pi_i P(X_i \vert Y=y_k)}{\sum_j P(Y=y_j)\Pi_i P(X_i \vert Y = y_j)}$$
+
+then, simplify it ignoring non-$$y_k$$ terms
+
+$$Y \leftarrow \underset{y_k}{\operatorname{argmax}}P(Y=y_k)\Pi_i P(X_i \vert Y=y_k)$$
+
+As $$X, Y$$ are the discrete random variables, we can get the $$P(Y=y_k)$$ and $$P(X_i \vert Y=y_k)$$ by frequencies counting. That's the whole story.
+
+The whole process seems so natural that we may ignore the key points in probabilistic model. The direct two questions can be proposed under the probabilistic perspective are:
+
+- Where or what is the hypothese $$h$$ in above naive Bayesian algorithm?
+- And how could we distinguish we're using the *MLE* or *MAP* to estimate $$h$$? 
+
+TK
+
+Define parameter
+
+$$\theta_{ijk} \equiv P(X_i = x_i^{(j)} \vert Y = y_k)$$
+
+
 
 
