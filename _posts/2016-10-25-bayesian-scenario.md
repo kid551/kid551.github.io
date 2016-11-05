@@ -67,14 +67,26 @@ As $$X, Y$$ are the discrete random variables, we can get the $$P(Y=y_k)$$ and $
 
 The whole process seems so natural that we may ignore the key points in probabilistic model. The direct two questions can be proposed under the probabilistic perspective are:
 
-- Where or what is the hypothese $$h$$ in above naive Bayesian algorithm?
+- Where or what is the hypothesis $$h$$ in above naive Bayesian algorithm?
 - And how could we distinguish we're using the *MLE* or *MAP* to estimate $$h$$? 
 
-TK
+In order to solve these two questions, I should clarify one trick part here. In above discussion, we've used one assumption implictly that $$X_i, Y$$ *are discrete-valued random variables*. Why does it care? Because, the probabilistic parameters, i.e. the hypothesis $$h$$, are in different from under these two different cases. Usually, we'd like to talk about the parameters in dense function, which is the continuous-valued random variable case. But for discrete-valued model, once we know the probability of different random variable situation, i.e. to know $$P(X = x_i)$$, we'd know the distribution of this random variable. Thus in this case, the estimated value is just the probability that random variable assigned with different value.
 
-Define parameter
+Now, we can answer the first question, what's the hypothesis $$h$$? In above Bayesian discussion, the estimated hypotheses are the values of $$P(Y = y_k)$$ and $$P(X_i \vert Y = y_k)$$.
+
+Let's discuss this part formally. Assume random variable $$Y$$ can take $$K$$ different values: $$Y = y_k$$, where $$k$$ takes from 1 to $$K$$.  Assume the $$n$$ different random variables $$X_i$$ can take $$J$$ different values: $$v_j$$, where $$j$$ takes from 1 to $$J$$. Define $$x_i^{(j)}$$ as the situation $$X_i = v_j$$.
+
+So, for the first part $$P(X_i \vert Y = y_k)$$, we need to estimate $$n \times J \times K $$ parameters, which we can define as
 
 $$\theta_{ijk} \equiv P(X_i = x_i^{(j)} \vert Y = y_k)$$
+
+As the $$X_i$$ can only take $$J$$ different values, we have $$\sum_{j=1}^J P(X_i = x_i^{(j)} \vert Y = y_k) = 1 $$. Thus there're only $$n \times (J-1) \times K$$ independent $$\theta_{ijk}$$ values.
+
+For the second part $$P(Y = y_k)$$, we can define the $$K$$ different parameters as:
+
+$$\pi_k \equiv P(Y = y_k)$$
+
+As $$Y$$ only takes $$K$$ different values, we have $$P(Y = y_k) = 1$$. Thus there're only $$(K-1)$$ independent $$\pi_k$$ values.
 
 
 
