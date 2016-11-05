@@ -70,6 +70,10 @@ The whole process seems so natural that we may ignore the key points in probabil
 - Where or what is the hypothesis $$h$$ in above naive Bayesian algorithm?
 - And how could we distinguish we're using the *MLE* or *MAP* to estimate $$h$$? 
 
+TK
+
+### Discrete-valued Naive Bayes
+
 In order to solve these two questions, I should clarify one trick part here. In above discussion, we've used one assumption implictly that $$X_i, Y$$ *are discrete-valued random variables*. Why does it care? Because, the probabilistic parameters, i.e. the hypothesis $$h$$, are in different from under these two different cases. Usually, we'd like to talk about the parameters in dense function, which is the continuous-valued random variable case. But for discrete-valued model, once we know the probability of different random variable situation, i.e. to know $$P(X = x_i)$$, we'd know the distribution of this random variable. Thus in this case, the estimated value is just the probability that random variable assigned with different value.
 
 Now, we can answer the first question, what's the hypothesis $$h$$? In above Bayesian discussion, the estimated hypotheses are the values of $$P(Y = y_k)$$ and $$P(X_i \vert Y = y_k)$$.
