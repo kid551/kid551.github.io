@@ -92,6 +92,41 @@ $$\pi_k \equiv P(Y = y_k)$$
 
 As $$Y$$ only takes $$K$$ different values, we have $$P(Y = y_k) = 1$$. Thus there're only $$(K-1)$$ independent $$\pi_k$$ values.
 
+TK
+
+### Regularization and MAP
+
+On technique to avoid overfitting is using regularization. It adds one penalty term to objective funtion to control the complexity of weights $$W$$. From the perspective of statistics, this regularization term is equivalent to the prior distribution $$P(W)$$ in MAP. Let's see the details.
+
+Assume the weight $$W$$ is governed by the normal distribution $$N(0, 1/N^2)$$, the objective function we want to optimize is
+
+$$W \leftarrow \underset{W}{\operatorname{argmax}}P(Y|X, W)$$
+
+Then, if we add the prior distribution, it becomes:
+
+$$W \leftarrow \underset{W}{\operatorname{argmax}}P(Y|X, W)P(W)$$
+
+As it's an optimization problem, it's also fine to add the function $$Ln(\cdot)$$ for the objective function, i.e.
+
+$$W \leftarrow \underset{W}{\operatorname{argmax}} lnP(Y|X, W) + lnP(W)$$
+
+As $$W \~ N(0, (1/N)^2)$$, where
+
+$$ N(0, (1/N)^2) = \frac{N}{\sqrt{2\pi}}exp(-\frac{N^2}{2}x^2)$$
+
+Thus the term $$ln P(W)$$ becomes:
+
+$$ln P(W) = ln\frac{N}{\sqrt{2\pi}}-\frac{N^2}{2}W^2=ln\frac{N}{\sqrt{2\pi}}-\frac{N^2}{2}\lvert W \rvert^2$$
+
+Ignoring the constant term in optimization problem, the original objective function with prior distribution becomes
+
+$$W \leftarrow \underset{W}{\operatorname{argmax}}P(Y|X, W)-\frac{N^2}{2}\lvert W \rvert^2$$
+
+which is what we want to prove.
+
+
+
+
 
 
 
