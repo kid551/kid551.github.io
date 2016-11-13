@@ -106,13 +106,13 @@ Then, if we add the prior distribution, it becomes:
 
 $$W \leftarrow \underset{W}{\operatorname{argmax}}P(Y|X, W)P(W)$$
 
-As it's an optimization problem, it's also fine to add the function $$Ln(\cdot)$$ for the objective function, i.e.
+As it's an optimization problem, it's also fine to add the function $$ln(\cdot)$$ for the objective function, i.e.
 
 $$W \leftarrow \underset{W}{\operatorname{argmax}} lnP(Y|X, W) + lnP(W)$$
 
-As $$W \~ N(0, (1/N)^2)$$, where
+As $$W \sim N(0, 1/N^2)$$, where
 
-$$ N(0, (1/N)^2) = \frac{N}{\sqrt{2\pi}}exp(-\frac{N^2}{2}x^2)$$
+$$ N(0, 1/N^2) = \frac{N}{\sqrt{2\pi}}exp(-\frac{N^2}{2}x^2)$$
 
 Thus the term $$ln P(W)$$ becomes:
 
