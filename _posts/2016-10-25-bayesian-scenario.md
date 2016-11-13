@@ -13,7 +13,7 @@ When we mention Bayesian analysis in machine learning, the most popular junior e
 
 ### Introduction to statistical learning
 
-For a learner that we want to build is a function $$f: \mathcal{X} \rightarrow \mathcal{Y}$$, which maps from the input space $$\mathcal{X}$$ to the outut space $$\mathcal{Y}$$. Often, the dataset $$D$$ we observe is the subset of input space $$\mathcal{X}$$. And the predicted result $$y$$ is the value in output space $$\mathcal{Y}$$. The whole process of machine learning is to build learner. And this is the so-called **deterministic model**. Because our output here is directly the data $$y$$ we want. 
+For a learner that we want to build is a function $$f: \mathcal{X} \rightarrow \mathcal{Y}$$, which maps from the input space $$\mathcal{X}$$ to the outut space $$\mathcal{Y}$$. Often, the dataset $$D$$ we observe is the subset of input space $$\mathcal{X}$$. And the predicted result $$y$$ is the value in output space $$\mathcal{Y}$$. The whole process of machine learning is to build learner. And this is the so-called **discriminative model**. Because our output here is directly the data $$y$$ we want. 
 
 We can revisit the **Machine Learning** definition given by Tom M.Mitchell:
 
@@ -21,7 +21,7 @@ We can revisit the **Machine Learning** definition given by Tom M.Mitchell:
 
 The experience $$E$$ is the data that we learn from, the task $$T$$ is often treated as prediction or classification. And the performance $$P$$ is the loss function that we used to measure how good our classifier is.
 
-One quick question is where is the probability, i.e. what's the probability framework of this leanring problem? Thus we need to introduce the **probabilistic model**, which is a different perpsective from *deterministic model*.
+One quick question is where is the probability, i.e. what's the probability framework of this leanring problem? Thus we need to introduce the **probabilistic model**, which is a different perpsective from *discriminative model*.
 
 Instead of directly predicting the data $$y$$, we'll predict the *probability* that the data $$y$$ appearing under the condition observing existing data $$X$$. To be more rigorous, let's build the probabilistic model from random variable definitions. From the probability perspective, define the input/observed data $$X \in \mathcal{X}$$ as input random variable. So is the output value $$Y\in\mathcal{Y}$$. For each new result $$y$$, we want to get the probability of $$P(Y=y \vert X)$$.
 
