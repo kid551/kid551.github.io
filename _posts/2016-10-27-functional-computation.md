@@ -1,7 +1,7 @@
 ---
 layout: post
 comments: true
-title:  "One efficient way to compute functional differential"
+title:  "One efficient way to compute functional differential (draft)"
 excerpt: "easy way to do functional calculus"
 date:   2016-10-27
 mathjax: true
@@ -94,6 +94,10 @@ Now, it's easy to see the 2nd order differential of our functional:
 $$\Gamma_2(x, x') = 2\ C_n^2 [f(x')]^{n-2}\ \delta(x-x') = n(n-1)[f(x)]^{n-2}\delta(x-x')$$
 
 where we used the symmetry of Dirac function.
+
+Another useful example is to compute the entropy functional.
+
+TK 
 
 
 
