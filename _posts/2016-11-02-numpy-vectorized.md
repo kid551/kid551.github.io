@@ -1,7 +1,7 @@
 ---
 layout: post
 comments: true
-title:  "Vectorization in numpy"
+title:  "Vectorization in numpy (draft)"
 excerpt: "Some examples for vectorization in machine learning algorithms"
 date:   2016-11-02
 mathjax: true

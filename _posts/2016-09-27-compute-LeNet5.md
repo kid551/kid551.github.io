@@ -1,7 +1,7 @@
 ---
 layout: post
 comments: true
-title:  "Notes in LeNet-5"
+title:  "Notes in LeNet-5 (draft)"
 excerpt: "notes of my understanding in LeNet-5."
 date:   2016-09-27
 mathjax: true
