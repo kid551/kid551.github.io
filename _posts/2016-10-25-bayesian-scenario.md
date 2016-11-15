@@ -1,7 +1,7 @@
 ---
 layout: post
 comments: true
-title:  "The scenario behind Bayesian analysis"
+title:  "The scenario behind Bayesian analysis (draft)"
 excerpt: "exploring the Bayesian scenario in machine learning"
 date:   2016-10-25
 mathjax: true
@@ -71,6 +71,32 @@ The whole process seems so natural that we may ignore the key points in probabil
 - And how could we distinguish we're using the *MLE* or *MAP* to estimate $$h$$? 
 
 TK
+
+### Different Concrete Methods under Naive Bayes Framework
+
+Although Naive Bayes is often introduced as one method, in fact it's one general thinking, or just one framework of lots of concrete methods. From the above discussion we can know that, with different probability distribution, the Naive Bayes will appear in different concrete implementation form. I'll show some common used concrete Naive Bayes methods and their gists of their categories.
+
+As Naive Bayesian is one classifier, it'll deal with
+
+- boolean classification problem, i.e. $$0$$-$$1$$ classification,
+- or multiclass, i.e. more than two category, classification problem. So, we may classify the category based on if $$P(Y)$$ is Bernoulli distribution or multinomial distribution.
+
+Then, under each above category, we may further make categories based if the $$P(X\vert Y)$$ is continous or discrete distribution.
+
+- For continuous distribution $$P(X\vert Y)$$, we often use Gaussian.
+- For discrete distribution $$P(X\vert Y)$$, we often use Bernoulli and multinomial as how we treat $$P(Y)$$.
+
+In summary, the above common six category Naive Bayes methods are:
+
+1. **Gaussian Naive Bayes**: $$P(Y)$$ is Bernoulli, $$P(X\vert Y)$$ is Gaussian
+2. **Bernoulli Naive Bayes**: $$P(Y)$$ is Bernoulli, $$P(X\vert Y)$$ is Bernoulli
+3. **Multiclass Naive Bayes**: $$P(Y)$$ is Bernoulli, $$P(X\vert Y)$$ is Multiclass
+4. **Multiclass Gaussian Naive Bayes**: $$P(Y)$$ is Multiclass, $$P(X\vert Y)$$ is Gaussian
+5. **Multiclass Bernoulli Naive Bayes**: $$P(Y)$$ is Multiclass, $$P(X\vert Y)$$ is Bernoulli
+6. **Multiclass Multiclass Naive Bayes**: $$P(Y)$$ is Multiclass, $$P(X\vert Y)$$ is Multiclass
+
+
+
 
 ### Discrete-valued Naive Bayes
 
