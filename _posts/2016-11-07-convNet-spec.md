@@ -18,6 +18,16 @@ Notes from cs231n.
 3. **Backprop** to calculate the gradients.
 4. **Update** the weights by using gradients.
 
+#### Notes
+
+Usually, in above situation, the number of loops that we apply is provided by ourselves, e.g. `num_iterations`. But in some literature, there's another form to use `num_epochs` instead to express this single number indirectly.
+
+What's the meaning of a *epoch*. It often means one round of going through all training data. But in every loop above, our mini-batch can only go through `batch_size` number of training data.
+
+So in order to finish *one epoch* quantity execution, we need to go through `num_train / batch_size`, which is also defined as `iterations_per_epoch`, times of above loop.
+
+Correspondingly, in order to satisfy `num_epochs` quantity standard, we need to apply `num_epochs * iterations_per_epoch` times of above loops. (We only use the middle variable `iterations_per_epoch` here once.) That's why I said if we provide `num_epochs` only, it's just another way to express the `num_iterations` indirectly.
+
 ---
 
 ### One Time Setup
