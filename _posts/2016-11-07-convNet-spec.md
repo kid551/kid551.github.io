@@ -11,9 +11,9 @@ Notes from cs231n.
 
 ### Mini-batch SGD
 
-**Loop:**
+**Loop** (`num_iterations` times):
 
-1. **Sample** a batch of data instead of using all data.
+1. **Sample** a batch of data (`batch_size` size) instead of using all data.
 2. **Forward** prop it through the graph, get its loss (the final *data loss* and each layer's *regularization loss*).
 3. **Backprop** to calculate the gradients.
 4. **Update** the weights by using gradients.
