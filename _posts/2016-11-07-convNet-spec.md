@@ -83,7 +83,15 @@ W = 0.01 * np.random.randn(D, H)
 
 But it only works fine for small networks, but leads to non-homogeneous distributions of activations across the layers of a network.
 
-The reason is ...
+Why is it invalid for large networks? Think about the backward process. Assume the loss of the linear activation $$W\cdot X$$ is 1, the input size of $$X$$ is 500, and the $$W$$ is initialized based on above formula. If there're 100 neurons' $$W$$ are allocated with parameter value 100, the remaining 400 neurons' gradients will be almost zero. That's the so-called situation of non-homogeneous distribution of activations.
+
+So in order to improve this situation, we can allocate the value of $$W$$ based on the input size of $$X$$, which introduces the second method to initialize $$W$$.
+
+```python
+W = np.random.randn(fan_in, fan_out) / np.sqrt(fan_in) # layer initialization
+```
+
+which is introduced by the paper *Xavier initialization, by Glorot et all, 2010*.
 
 TK
 
