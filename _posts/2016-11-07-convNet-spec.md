@@ -75,17 +75,30 @@ In practice for image: centered only.
 
 #### 3. Weight Initialization
 
-If all $$W$$ are zero, then the network can't just startup. So the first idea is just giving it small random numbers:
+If all $$W$$ are zero, then the network can't just startup. So the first idea is just giving it small random numbers close to zero:
 
 ```python
 W = 0.01 * np.random.randn(D, H)
 ```
 
-But it only works fine for small networks, but leads to non-homogeneous distributions of activations across the layers of a network.
+But it only works fine for small networks, but leads to non-homogeneous distributions of activations across the layers of a network. Let's take a look at one example with the following update step, where $$W$$ is initialized from above formula:
 
-Why is it invalid for large networks? Think about the backward process. Assume the loss of the linear activation $$W\cdot X$$ is 1, the input size of $$X$$ is 500, and the $$W$$ is initialized based on above formula. If there're 100 neurons' $$W$$ are allocated with parameter value 100, the remaining 400 neurons' gradients will be almost zero. That's the so-called situation of non-homogeneous distribution of activations.
+```python
+a = np.dot(W, X)
+h = np.tanh(a)
+```
 
-So in order to improve this situation, we can allocate the value of $$W$$ based on the input size of $$X$$, which introduces the second method to initialize $$W$$.
+As $$W$$ is normal distribution centered at zero point, the mean value of $$h$$ in above code will be closer and closer to zero with more layers. Also pay attension, this layer's $$h$$ will be next layer's $$X$$. And as the $$X$$ gettting closer to zero with $$h$$, in the backpropagation, the gradient of $$dW$$ will also be closer to zero: $$dW = dout \cdot X^T$$. Thus the last multiple layers' gradient will stay at zero, which makes the whole network not work.
+
+On the other side, if the random coefficient of $$W$$ is close to 1, we'd face another extreme point. For example, if we use the formula:
+
+```python
+W = 1.0 * np.random.randn(D, H)
+```
+
+Then each element of $$W \cdot X$$ may be greater than $$1$$ or less than $$1$$, which may lead to $$tanh(W \cdot X)$$ equals $$1$$ or $$-1$$. Thus, when we take gradient on those points in $$tanh(W \cdot X)$$, we'd get the gradients equal $$0$$. And again, this makes the whole network not work.
+
+In summary, we can't make the initialization of $$W$$ very close to $$0$$ or $$1$$, but between them. So in order to improve this situation, we can allocate the value of $$W$$ based on the input size of $$X$$, which introduces the second method to initialize $$W$$.
 
 ```python
 W = np.random.randn(fan_in, fan_out) / np.sqrt(fan_in) # layer initialization
@@ -104,6 +117,17 @@ TK
 > 3. Hyperparameter optimization
 
 #### 1. Babysitting the Learning Process
+
+
+#### 2. Parameter updates
+
+The method of learning rate updates includes:
+
+- SGD
+- SGD + Momentum
+- Adagrad
+- RMSProp
+- Adam
 
 TK
 
