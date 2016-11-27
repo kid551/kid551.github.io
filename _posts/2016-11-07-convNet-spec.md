@@ -106,6 +106,20 @@ W = np.random.randn(fan_in, fan_out) / np.sqrt(fan_in) # layer initialization
 
 which is introduced by the paper *Xavier initialization, by Glorot et all, 2010*.
 
+But there may still be problem. When using the `ReLu`, nonlinearity, it breaks. The tiny modification can be made on it(note the additonal `/2`):
+
+```python
+W = np.random.randn(fan_in, fan_out) / np.sqrt(fan_in / 2) # layer initialization
+```
+
+which is referenced from *He et al., 2015*.
+
+#### 4. Regularization
+
+TK
+
+#### 5. Gradient Checking
+
 TK
 
 ---
