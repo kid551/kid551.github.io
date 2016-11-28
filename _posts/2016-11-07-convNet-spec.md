@@ -173,16 +173,25 @@ So now, our partial differential equation becomes:
 
 $$ -\alpha\cdot\nabla_x J(x) + \mu\cdot v(t) = \frac{\partial}{\partial t} v(t)$$
 
-where $$\epsilon$$ is one constant number. As $$v(t) = \frac{\partial}{\partial t} x(t)$$, we can use *Euler method* to update $$x$$:
+where $$\epsilon$$ is one constant number. Use *Euler method* to update $$v(t)$$:
 
 $$
 \begin{align}
-x(t+h) &= x(t) + h\cdot \frac{\partial}{\partial t} x(t) \\
-       &= x(t) + h\cdot \lbrack -\alpha\cdot\nabla_xJ(x) + \mu\cdot v(t) \rbrack
+v(t + h) &= v(t) + h\cdot \frac{\partial}{\partial t} v(t) \\
+         &= v(t) + h\cdot \lbrack -\alpha\cdot\nabla_xJ(x) + \mu\cdot v(t) \rbrack
 \end{align}
 $$
 
-Assume the $$h = 1$$(as for the next `1` step), use the definition of *learning rate*, and introduce the varible `v`, which in fact represents the acceleration, we can get the beginning *SGD plus Momentum* code.
+Assume the $$h = 1$$(as for the next `1` step), use the definition of *learning rate*, and introduce the varible `v`, we can get the beginning *SGD plus Momentum* first code part. As $$v(t)=\frac{\partial}{\partial t}x(t)$$, we use Euler method again:
+
+$$
+\begin{align}
+x(t+1) &= x(t) + \frac{\partial}{\partial t} x(t) \\
+       &= x(t) + v(t)
+\end{align}
+$$
+
+, which is the second code part.
 
 
 
