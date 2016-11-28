@@ -182,7 +182,7 @@ v(t + h) &= v(t) + h\cdot \frac{\partial}{\partial t} v(t) \\
 \end{align}
 $$
 
-Assume the $$h = 1$$(as for the next `1` step), use the definition of *learning rate*, and introduce the varible `v`, we can get the beginning *SGD plus Momentum* first code part. As $$v(t)=\frac{\partial}{\partial t}x(t)$$, we use Euler method again:
+Assume the $$h = 1$$(as for the next `1` step), use the definition of *learning rate*, and introduce the varible `v`, we can get the beginning *SGD plus Momentum* code's first part. As $$v(t)=\frac{\partial}{\partial t}x(t)$$, we use Euler method again:
 
 $$
 \begin{align}
@@ -191,7 +191,7 @@ x(t+1) &= x(t) + \frac{\partial}{\partial t} x(t) \\
 \end{align}
 $$
 
-, which is the second code part.
+, which is the code's second part.
 
 
 
