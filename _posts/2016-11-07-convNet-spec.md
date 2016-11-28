@@ -158,7 +158,7 @@ v = mu * v - learning_rate * dx
 x += v
 ```
 
-, the value of mass is often assumed as unit quantity, i.e. the $$1$$. Thus, we only need to consider the velocity part. The whole optimization process can be treated as one particle's movement. Its position at time $$t$$ can be treated as function $$x(t)$$. Then the particle may experience the net force $$f(t)$$. And we can get the acceleration as
+, the value of mass is often assumed as unit quantity, i.e. the $$1$$. Thus, we only need to consider the velocity part. The whole optimization process can be treated as one particle's movement. Its position at time $$t$$ can be treated as function $$x(t)$$. Then the particle may experience the net force $$f(t)$$. And we can get the acceleration as (note our mass has been assumed as 1)
 
 $$f(t) = \frac{\partial^2}{\partial t^2}x(t)$$
 
@@ -167,13 +167,13 @@ $$f(t) = \frac{\partial^2}{\partial t^2}x(t)$$
 Now, we need to construct the force $$f$$:
 
 - As $$f$$ is the net force, it's obvious to contain one force that proportional to the negative gradient of the cost function: $$-\nabla_x J(x)$$, which pushes the particle downhill along the cost function surface.
-- But if there's only this force constituting net force, this particle will move forever between uphill and downhill. Thus we need to introduce another force, called *viscous drag* in physics, which is proportional to $$-v(t)$$. Here, the negative symbol means it's one reverse direction comparing the $$-\nabla_xJ(x)$$. This *viscous drag* can ensure the particle stop at the local minimum position.
+- But if there's only this force constituting net force, this particle will move forever between uphill and downhill. Thus we need to introduce another force, called *viscous drag* in physics, which is proportional to $$-v(t)$$. Here, the negative symbol means it's one reverse direction relative to the $$-\nabla_xJ(x)$$. This *viscous drag* can ensure the particle stop at the local minimum position.
 
 So now, our partial differential equation becomes:
 
 $$ -\alpha\cdot\nabla_x J(x) + \mu\cdot v(t) = \frac{\partial}{\partial t} v(t)$$
 
-where $$\epsilon$$ is one constant number. Use *Euler method* to update $$v(t)$$:
+where $$\mu$$ is one constant number. Use *Euler method* to update $$v(t)$$:
 
 $$
 \begin{align}
@@ -191,7 +191,7 @@ x(t+1) &= x(t) + \frac{\partial}{\partial t} x(t) \\
 \end{align}
 $$
 
-, which is the code's second part.
+, which is the code's second part. There's also another accelerated gradient method *Nesterov Momentum*, but it seems not imporove the rate of convergence according to *Deep Learning Book, Goodfellow, Bengio*.
 
 
 
