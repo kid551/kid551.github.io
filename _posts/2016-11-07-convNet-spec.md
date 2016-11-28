@@ -7,7 +7,7 @@ date:   2016-11-07
 mathjax: true
 ---
 
-Notes from cs231n.
+Remarks on cs231n.
 
 ### Mini-batch SGD
 
