@@ -143,6 +143,51 @@ The method of learning rate updates includes:
 - RMSProp
 - Adam
 
+`SGD` is simple and obvious:
+
+```python
+x += -learning_rate * dx
+```
+
+. But it may cause the zigzag convergent path, and progress with *flat direction* when one direction is steep and another is shallow. Thus, one direct modification is use momentum to reduce the flat direction impact.
+
+`Momentum` in physics is computed through the formula: $$p = v \cdot m$$. In *SGD plus Momentum* algorithm:
+
+```python
+v = mu * v - learning_rate * dx
+x += v
+```
+
+, the value of mass is often assumed as unit quantity, i.e. the $$1$$. Thus, we only need to consider the velocity part. The whole optimization process can be treated as one particle's movement. Its position at time $$t$$ can be treated as function $$x(t)$$. Then the particle may experience the net force $$f(t)$$. And we can get the acceleration as
+
+$$f(t) = \frac{\partial^2}{\partial t^2}x(t)$$
+
+. Introducing velocity $$v(t) = \frac{\partial}{\partial t}x(t)$$, the above partial differential equation becomes: $$f(t)=\frac{\partial}{\partial t}v(t)$$.
+
+Now, we need to construct the force $$f$$:
+
+- As $$f$$ is the net force, it's obvious to contain one force that proportional to the negative gradient of the cost function: $$-\nabla_x J(x)$$, which pushes the particle downhill along the cost function surface.
+- But if there's only this force constituting net force, this particle will move forever between uphill and downhill. Thus we need to introduce another force, called *viscous drag* in physics, which is proportional to $$-v(t)$$. Here, the negative symbol means it's one reverse direction comparing the $$-\nabla_xJ(x)$$. This *viscous drag* can ensure the particle stop at the local minimum position.
+
+So now, our partial differential equation becomes:
+
+$$ -\alpha\cdot\nabla_x J(x) + \mu\cdot v(t) = \frac{\partial}{\partial t} v(t)$$
+
+where $$\epsilon$$ is one constant number. As $$v(t) = \frac{\partial}{\partial t} x(t)$$, we can use *Euler method* to update $$x$$:
+
+$$
+\begin{align}
+x(t+h) &= x(t) + h\cdot \frac{\partial}{\partial t} x(t) \\
+       &= x(t) + h\cdot \lbrack -\alpha\cdot\nabla_xJ(x) + \mu\cdot v(t) \rbrack
+\end{align}
+$$
+
+Assume the $$h = 1$$(as for the next `1` step), use the definition of *learning rate*, and introduce the varible `v`, which in fact represents the acceleration, we can get the beginning *SGD plus Momentum* code.
+
+
+
+#### 3. Hyperparameter optimization
+
 TK
 
 ---
