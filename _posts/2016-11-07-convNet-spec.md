@@ -114,6 +114,118 @@ W = np.random.randn(fan_in, fan_out) / np.sqrt(fan_in / 2) # layer initializatio
 
 which is referenced from *He et al., 2015*.
 
+Another thing need to be mentioned about $$W$$ is the **Batch Normalization** method, which can reduce the problem of coordinating updates across many layers.
+
+According to *Ioffe and Szegedy, 2015*, batch normalization's forward process is getting the mean and variance of one mini-batch, which is then used to normalize the inputting data. Backward process is computed accordingly.
+
+#### **Forward algorithm:**
+
+**Input:** Values of $$x$$ over a mini-batch $$\mathcal{B}={x_1, \cdots, x_m}$$; Parameters to be learned $$\gamma, \beta$$.
+
+**Output:** $$\{ y_i = BN_{\gamma, \beta}(x_i)\vert i=1,\cdots,m \}$$
+
+$$
+\begin{align}
+\mu_{\mathcal{B}} &\leftarrow \frac{1}{m}\sum_{i=1}^m x_i \\ \\
+
+\sigma_{\mathcal{B}}^2 &\leftarrow \frac{1}{m}\sum_{i=1}^m(x_i-\mu_{\mathcal{B}})^2 \\ \\
+
+\hat{x}_i &\leftarrow \frac{x_i-\mu_{\mathcal{B}}}{\sqrt{\sigma_{\mathcal{B}}^2 + \epsilon}} \\ \\
+
+y_i &\leftarrow \gamma\hat{x}_i + \beta \equiv BN_{\gamma, \beta}(x_i)
+\end{align}
+$$
+
+where $$\epsilon$$ is a small number, e.g. `1e-8`, to avoid dividing zero.
+
+The corresponding python code is:
+
+```python
+# Assume variable 'x' is the mini-batch
+
+# 1. Compute sample mean, variance
+sample_mean = np.mean(x, axis=0)
+sample_var = np.std(x, axis=0) ** 2
+
+# 2. Scale and shift
+x_hat = (x - sample_mean) / np.sqrt(eps + sample_var)
+
+# 3. Compute result
+out = gamma * x_hat + beta
+```
+
+#### **Backward**
+
+It's the reverse process relative to forward.
+
+**Step 1:** Output level, reverse of `out = gamma * x_hat + beta`
+
+$$
+\begin{align}
+\frac{\partial l}{\partial \hat{x}_i} &= \frac{\partial l}{\partial y_i}\cdot \gamma \\ \\
+
+\frac{\partial l}{\partial \gamma} &= \sum_{i=1}^m \frac{\partial l}{\partial y_i}\cdot \hat{x}_i \\ \\
+
+\frac{\partial l}{\partial \beta} &= \sum_{i=1}^m \frac{\partial l}{\partial y_i}
+\end{align}
+$$
+
+**Step 2:** Scale, shift level, reverse of `x_hat = (x - sample_mean) / np.sqrt(eps + sample_var)`.
+
+$$
+\begin{align}
+\frac{\partial l}{\partial \sigma_{\mathcal{B}}^2} &= \sum_{i=1}^m \frac{\partial l}{\partial \hat{x}_i}\cdot (x_i-\mu_{\mathcal{B}})\cdot \frac{-1}{2}(\sigma_{\mathcal{B}}^2 +\epsilon)^{-3/2} \\ \\
+
+\frac{\partial l}{\partial \mu^{(1)}_{\mathcal{B}}} &= \sum_{i=1}^m \frac{\partial l}{\partial \hat{x}_i}\cdot \frac{-1}{\sqrt{\sigma_{\mathcal{B}}^2+\epsilon}} \\ \\
+
+\frac{\partial l}{\partial x_i^{(1)}} &= \frac{\partial l}{\partial \hat{x}_i}\cdot \frac{1}{\sqrt{\sigma_{\mathcal{B}}^2+\epsilon}}
+\end{align}
+$$
+
+**Step 3:** Sample mean, variance level, reverse of
+
+```python
+sample_mean = np.mean(x, axis=0)
+sample_var = np.std(x, axis=0) ** 2
+```
+
+**Step 3.1:** Another *gradient on mean* from variance $$\sigma_{\mathcal{B}}^2 \leftarrow \frac{1}{m}\sum_{i=1}^m(x_i-\mu_{\mathcal{B}})^2$$
+
+$$
+\begin{align}
+\frac{\partial l}{\partial \mu^{(2)}_{\mathcal{B}}} &= \frac{\partial l}{\partial \sigma_{\mathcal{B}}^2} \cdot \frac{\sum_{i=1}^m -2(x_i-\mu_{\mathcal{B}})}{m}
+\end{align}
+$$
+
+Thus the whole gradient on mean should be
+
+$$\frac{\partial l}{\partial \mu_{\mathcal{B}}} = \frac{\partial l}{\partial \mu^{(1)}_{\mathcal{B}}} + \frac{\partial l}{\partial \mu^{(2)}_{\mathcal{B}}}$$
+
+**Step 3.2:** The gradient on $$x$$ from variance, reverse of $$\sigma_{\mathcal{B}}^2 \leftarrow \frac{1}{m}\sum_{i=1}^m(x_i-\mu_{\mathcal{B}})^2$$
+
+$$
+\frac{\partial l}{\partial x_i^{(2)}} = \frac{\partial l}{\partial \sigma_{\mathcal{B}}^2}\cdot \frac{2(x_i-\mu_{\mathcal{B}})}{m}
+$$
+
+**Step 3.3:** The gradient on $$x$$ from mean, the reverse of $$\mu_{\mathcal{B}} \leftarrow \frac{1}{m}\sum_{i=1}^m x_i$$
+
+$$
+\frac{\partial l}{\partial x_i^{(3)}} = \frac{\partial l}{\partial \mu_{\mathcal{B}}}\cdot \frac{1}{m}
+$$
+
+Thus the whole gradient on $$x$$ should be
+
+$$
+\frac{\partial l}{\partial x_i} = \frac{\partial l}{\partial x_i^{(1)}} + \frac{\partial l}{\partial x_i^{(2)}} + \frac{\partial l}{\partial x_i^{(3)}}
+$$
+
+
+
+
+
+
+
+
 #### 4. Regularization
 
 TK
