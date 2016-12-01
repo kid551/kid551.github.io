@@ -141,17 +141,19 @@ where $$\epsilon$$ is a small number, e.g. `1e-8`, to avoid dividing zero.
 The corresponding python code is:
 
 ```python
-# Assume variable 'x' is the mini-batch
+# Here we treat variable x as mini-batch directly.
 
-# 1. Compute sample mean, variance
+# 1. Compute sample mean, variance: (D, )
 sample_mean = np.mean(x, axis=0)
 sample_var = np.std(x, axis=0) ** 2
 
-# 2. Scale and shift
+# 2. Scale and shift, x_hat: (N, D)
 x_hat = (x - sample_mean) / np.sqrt(eps + sample_var)
 
-# 3. Compute result
+# 3. Compute result: (N, D)
 out = gamma * x_hat + beta
+    
+cache = (x, x_hat, gamma, eps, sample_mean, sample_var)
 ```
 
 #### **Backward**
@@ -219,6 +221,35 @@ $$
 \frac{\partial l}{\partial x_i} = \frac{\partial l}{\partial x_i^{(1)}} + \frac{\partial l}{\partial x_i^{(2)}} + \frac{\partial l}{\partial x_i^{(3)}}
 $$
 
+Based on above math formula, it's very easy to write corresponding python code:
+
+```python
+x, x_hat, gamma, eps, sample_mean, sample_var = cache
+N, D = x_hat.shape
+
+# Level 1, 'out = gamma * x_hat + beta'
+#   - dout : (N, D)
+#   - gamma: (D, )
+#   - beta : (D, )
+#   - x_hat: (N, D)
+dx_hat = dout * gamma
+dgamma = np.sum(dout * x_hat, axis=0)
+dbeta = np.sum(dout, axis=0)
+
+# Level 2, 'x_hat = (x - sample_mean) / np.sqrt(eps + sample_var)'
+#   - sample_mean, sample_var: (D, )
+dvar = np.sum(dx_hat * (x - sample_mean), axis=0) * (-0.5) * ((sample_var + eps) ** (-1.5))
+dmean1 = np.sum(dx_hat * (-1 / (sample_var + eps) ** 0.5), axis=0)
+dx1 = dx_hat / (sample_var + eps) ** 0.5
+
+# Level 3, 'sample_mean = np.mean(x, axis=0); sample_var = np.std(x, axis=0) ** 2'
+dmean2 = dvar * (np.sum(-2 * (x - sample_mean), axis=0) / N)
+dmean = dmean1 + dmean2
+
+dx2 = dvar * (2 * (x - sample_mean) / N)
+dx3 = dmean / N
+dx = dx1 + dx2 + dx3
+```
 
 
 
