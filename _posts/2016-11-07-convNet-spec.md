@@ -336,7 +336,46 @@ $$
 
 , which is the code's second part. There's also another accelerated gradient method *Nesterov Momentum*, but it seems not imporove the rate of convergence according to *Deep Learning Book, Goodfellow, Bengio*.
 
+`AdaGrad` adapts the learning rates:
 
+```python
+cache += dx ** 2
+x += - learning_rate * dx / (np.sqrt(cache) + 1e-7)
+```
+
+It has some desirable theoretical properties, but not all deep learning models perform well by using it.
+
+`RMSProp` improves *AdaGrad* on the non-convex problem by changing the greadient accumulation into an exponentially weighted moving average.
+
+```python
+cache += decay_rate * cache + (1 - decay_rate) * (dx ** 2)
+x += - learning_rate * dx / (np.sqrt(cache) + 1e-7)
+```
+
+`Adam` is another adaptive learning rate optimization method. Its names comes from the phrase *adaptive moments*. It can be treated as one variant of the combination of *Moment* and *RMSProp* algorithms.
+
+```python
+m, v = # ... initialize caches to zeros
+
+for t in xrange(1, big_number):
+  dx = # ... evaluate gradient
+
+  # 1. Update momentum
+  # update first momentum
+  m = beta1 * m + (1 - beta1) * dx
+  # update second momentum
+  v = beta2 * v + (1 - beta2) * (dx ** 2)
+
+  # 2. Bias Correction, only relevant 
+  # in first few iterations when t is small
+  mb = m / (1 - beta1 ** t)
+  vb = v / (1 - beta2 ** t)
+
+  # 3. Update x
+  x += - learning_rate * mb / (np.sqrt(vb) + 1e-7)
+```
+
+In practice, **Adam** is a good default choice in most cases. If you can afford the full batch updates, then try out **L-BFGS**.
 
 #### 3. Hyperparameter optimization
 
