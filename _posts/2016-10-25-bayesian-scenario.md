@@ -42,6 +42,14 @@ Once we've determined which distribution we want to use for prediction, the rema
 
 It's easy to see that these two different schools only differ in one term $$P(h)$$, i.e. the admission of **prior knowledge**, which gives totally different perspective to treat the whole world!
 
+### Fully Bayesian Approach
+
+Although the MAP estimates the parameters using Bayes formula, the method we used is still the *point estimation*. For the fully Bayesian approach, the parameter $$h$$ won't appear based on one point estimation, but be embedded into probability with all probable values of $$h$$. According to the assumption that we've known the scheme of probability distribution we want to estimate, the form of $$P(Y\vert X, h)$$ has been chosen in advance. Thus in order to evaluate $$P(Y\vert X, X=x, Y=y)$$, we have
+
+$$P(Y\vert X, X=x, Y=y) = \int P(Y\vert X, h) P(h\vert X=x, Y=y)\ dh$$
+
+where $$P(h\vert X=x, Y=y) \propto P(Y=y\vert X=x, h)\cdot P(h)$$, i.e. the *MAP*, which can be used above after normalization.
+
 
 ### Review of Naive Bayesian Classifier
 
