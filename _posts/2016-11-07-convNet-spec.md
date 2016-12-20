@@ -259,6 +259,84 @@ dx = dx1 + dx2 + dx3
 
 #### 4. Regularization
 
+#### Dropout
+
+Dropout is a very powerful technique to address the overfitting issue. The idea is just removing the neurons randomly in training process. To drop the neuron, we only need to generate a mask, which element is 0 or 1 based on one predefined probability distribution. Let's go into the details.
+
+Assume we have $$L$$ layers, its index is $$l$$, i.e. $$l \in \{1, \dots, L\}$$. In layer $$l$$, define $$h^{(l)}$$ as hidden layer, its parameters and bias as $$W^{(l)}, b^{(l)}$$, the input data is $$y^{(l)}$$, which is the output of last layer (assume $$y^{(0)}=x$$). The action function as $$a(\cdot)$$. Thus, for normal neural networks, we have relations:
+
+$$
+\begin{align}
+h_i^{(l+1)} &= w_i^{(l+1)}y^l+ b_i^{(l+1)}, \\
+y_i{(l+1)} &= a(h_i^{(l+1)})
+
+\end{align}
+$$
+
+With dropout, the process becomes
+
+$$
+\begin{align}
+m_j^{(l)} &\sim Bernoulli(p), \\
+\tilde{y}^{(l)} &= m^{(l)} * y^{(l)}, \\
+h_i^{(l+1)} &= w_i^{(l+1)}\tilde{y}^{(l)}+ b_i^{(l+1)}, \\
+y_i{(l+1)} &= a(h_i^{(l+1)})
+\end{align}
+$$
+
+where the $$*$$ is the element-wise product. In practice, we can directly set $$p = 0.5$$, which is efficient for most neural networks situations.
+
+The corresponding code is obvious:
+
+```python
+# forward training
+mask = np.random.rand(*x.shape) < p
+out = x * mask
+...
+# backward training
+dx = dout * mask
+```
+
+But for testing process, there's no dropout process but scale
+
+```python
+# forward test
+out = x
+...
+# backward test
+dx = dout * p
+```
+
+The production with $$p$$ in testing stage is used to keep expectation of each neuron consistent with training stage. For example, for a neuron $$x_i$$, its output expectation of dropout is $$p\cdot x_i + (1-p)\cdot 0 = p\cdot x_i$$. For training stage, the output is fixed, i.e. $$x_i$$. Thus we need to multiple $$p$$ on $$x_i$$ to make them equal.
+
+But this is not a good idea to keep consistency in training stage, in which the efficiency is important. To solve this issue, we can directly add the coefficient in training stage.
+
+```python
+# forward training
+mask = (np.random.rand(*x.shape) < p) / p
+out = x * mask
+...
+# backward training
+dx = dout * mask
+
+##############
+
+# forward test
+out = x
+...
+# backward test
+dx = dout
+```
+
+Now, the output expectation of neuron $$x_i$$ will be $$p\cdot (x_i / p) + (1-p)\cdot 0 = x$$.
+
+
+
+
+
+
+
+
 TK
 
 #### 5. Gradient Checking
