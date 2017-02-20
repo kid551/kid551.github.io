@@ -130,7 +130,7 @@ TK
 
 ### Regularization and MAP
 
-On technique to avoid overfitting is using regularization. It adds one penalty term to objective funtion to control the complexity of weights $$W$$. From the perspective of statistics, this regularization term is equivalent to the prior distribution $$P(W)$$ in MAP. Let's see the details.
+One technique to avoid overfitting is using regularization. It adds one penalty term to objective funtion to control the complexity of weights $$W$$. From the perspective of statistics, this regularization term is equivalent to the prior distribution $$P(W)$$ in MAP. Let's see the details.
 
 Assume the weight $$W$$ is governed by the normal distribution $$N(0, 1/N^2)$$, the objective function we want to optimize is
 
