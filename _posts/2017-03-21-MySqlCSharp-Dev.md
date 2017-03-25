@@ -60,4 +60,8 @@ bookIDTextbox.Text = dc[dc.Count - 1].Rows[0][0].ToString();
 
 In order to expand the columns space in **DataGridView**, we need to set the `AutoSizeMode` under `layout`. In Visual Studio, it appears as the title `Edit Columns...` .
 
+### Can not add Foreign Key, error code: 1215
+
+First you need to keep the type of column the same. Then, if you create a table with `Character Set = utf8;`, you need to keep both table with this format specifying.
+
 
