@@ -76,7 +76,4 @@ string.Format("insert into {0}(id, name, tel, address, descp) " +
 
 In above code, if you don't use `'` in `'{1}'`, you will get the **Unknown column in 'field list' error**.
 
-[TK]
-
-
 
