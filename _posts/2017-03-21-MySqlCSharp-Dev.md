@@ -64,4 +64,15 @@ In order to expand the columns space in **DataGridView**, we need to set the `Au
 
 First you need to keep the type of column the same. Then, if you create a table with `Character Set = utf8;`, you need to keep both table with this format specifying.
 
+### Unknown column in 'field list' error 
+
+In C# code, when you try to write SQL command, you're required to use `'` to wrap the value used for inserting. 
+
+```c#
+string.Format("insert into {0}(id, name, tel, address, descp) " + 
+                                        "values ('{1}', '{2}', '{3}', '{4}', '{5}')", 
+										CUSTOMER_TABLE, id, name, tel, addr, comment);
+```
+
+
 
