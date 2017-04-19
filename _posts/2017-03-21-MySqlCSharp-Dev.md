@@ -78,7 +78,10 @@ In above code, if you don't use `'` in `'{1}'`, you will get the **Unknown colum
 
 ### Add 'Copy&Paste' feature for DataGridView Cells
 
-In order to add this feature, you only need to add the 'KeyDown' event for the windows form. You can double click the 'Key -> KeyDown' section under the form's Properties part.
+In order to add this feature, you need to 
+
+- add the `KeyDown` event for the windows form. You can double click the `Key -> KeyDown` section under the form's Properties part.
+- change the `KeyPreview` property of this form as `true`.
 
 Finally, add the simple code below can make it work:
 
