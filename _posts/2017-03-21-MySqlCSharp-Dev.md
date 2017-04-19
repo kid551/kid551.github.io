@@ -76,4 +76,20 @@ string.Format("insert into {0}(id, name, tel, address, descp) " +
 
 In above code, if you don't use `'` in `'{1}'`, you will get the **Unknown column in 'field list' error**.
 
+### Add 'Copy&Paste' feature for DataGridView Cells
+
+In order to add this feature, you only need to add the 'KeyDown' event for the windows form. You can double click the 'Key -> KeyDown' section under the form's Properties part.
+
+Finally, add the simple code below can make it work:
+
+```c#
+public void CopyPasteDGCells(object sender, KeyEventArgs e, DataGridView dg)
+{
+	if ((e.Control && e.KeyCode == Keys.V) || (e.Shift && e.KeyCode == Keys.Insert))
+	{
+		BLL.UIUtils.Paste2Datagrid(dg);
+	}
+}
+```
+
 
