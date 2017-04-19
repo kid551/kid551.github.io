@@ -90,6 +90,53 @@ public void CopyPasteDGCells(object sender, KeyEventArgs e, DataGridView dg)
 		BLL.UIUtils.Paste2Datagrid(dg);
 	}
 }
+
+
+// ...
+
+
+// BLL.UIUtils
+
+// Comes from: 
+// https://social.msdn.microsoft.com/Forums/windows/en-US/e9cee429-5f36-4073-85b4-d16c1708ee1e/how-to-paste-ctrlv-shiftins-the-data-from-clipboard-to-datagridview-datagridview1-c?forum=winforms
+public static void Paste2Datagrid(DataGridView pastedDG)
+{
+	char[] rowSplitter = { '\r', '\n' };
+	char[] columnSplitter = { '\t' };
+
+	// Get the text from clipboard
+	string stringInClipboard = (string)Clipboard.GetDataObject().GetData(DataFormats.Text);
+
+	// Split it into lines
+	string[] rowsInClipboard = stringInClipboard.Split(rowSplitter, StringSplitOptions.RemoveEmptyEntries);
+
+	// Get the row and column of selected cell in grid
+	int rowIndx = pastedDG.SelectedCells[0].RowIndex;
+	int colIndx = pastedDG.SelectedCells[0].ColumnIndex;
+
+	// Add rows into grid to fit clipboard lines
+	if (pastedDG.Rows.Count < (rowIndx + rowsInClipboard.Length))
+	{
+		pastedDG.Rows.Add(rowIndx + rowsInClipboard.Length - pastedDG.Rows.Count);
+	}
+
+	// Loop through the lines, split them into cells and place the values in the corresponding cell.
+	for (int iRow = 0; iRow < rowsInClipboard.Length; iRow++)
+	{
+		// Split row into cell values
+		string[] valuesInRow = rowsInClipboard[iRow].Split(columnSplitter);
+
+		// Cycle through cell values
+		for (int iCol = 0; iCol < valuesInRow.Length; iCol++)
+		{
+			// Assign cell value, only if it within columns of the grid
+			if (pastedDG.ColumnCount - 1 >= colIndx + iCol)
+			{
+				pastedDG.Rows[rowIndx + iRow].Cells[colIndx + iCol].Value = valuesInRow[iCol];
+			}
+		}
+	}
+}
 ```
 
 
