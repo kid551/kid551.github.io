@@ -142,4 +142,28 @@ public static void Paste2Datagrid(DataGridView pastedDG)
 }
 ```
 
+### Anonymous Unique Constraint
+
+Sometimes, you may add the anonymous unique constraint like this:
+
+```sql
+create table customer
+(
+id varchar(10) PRIMARY KEY,
+name varchar(10),
+tel varchar(10) unique
+)Character Set = utf8;
+```
+
+How can we drop this constraint without index? The answer is, the word before `unique` is the name of constriant index instead of column name. So we only need to use code below to drop this unique constraint:
+
+```sql
+DROP INDEX tel ON customer;
+```
+
+
+
+
+
+
 
