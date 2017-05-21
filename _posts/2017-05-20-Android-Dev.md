@@ -7,9 +7,9 @@ date:   2017-05-20
 mathjax: true
 ---
 
-### Layout for draging and droppiong component
+### Drag and Drop Android Studio Solution
 
-If you want to develop your UI fast as Visual Studio, it's better to set your `layout` as `RelativeLayout`.
+When you first use Android Studio to build UI, it's weird that your UI can't display at the correct position that you want. This is due to the `layout` you set in your XML file. If you want to develop your UI fast as Visual Studio, it's better to set your `layout` as `RelativeLayout`.
 
 ```xml
 <RelativeLayout
@@ -25,9 +25,9 @@ If you want to develop your UI fast as Visual Studio, it's better to set your `l
 </RelativeLayout>
 ```
 
-### Add click event for a button
+### Android button Onclick
 
-You only need to add one piece of code of clicking listener for a button. 
+For a Android newbie, one common question is how to add click event for a button? Pretty simple! You only need to add one piece of code of clicking listener for a button. 
 
 ```java
 Button runButton;
@@ -41,9 +41,9 @@ runButton.setOnClickListener(new View.OnClickListener() {
 	}});
 ```
 
-### Copy text to clipboard
+### Android Copy to Clipboard 
 
-When you want to copy some texts into clipboard, the `ClipboardManager` is a good choice. 
+When you want to copy some texts into clipboard, use `android clipboard manager` is a good choice. 
 
 ```java
 ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
@@ -53,10 +53,4 @@ ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOA
 ClipData clip = ClipData.newPlainText("text label", "copied text");
 clipboard.setPrimaryClip(clip);
 ```
-
-
-
-
-
-
 
