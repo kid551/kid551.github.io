@@ -151,18 +151,18 @@ From Jason Ng:
 **HTML Code:**
 
 ```html
-<section style="   box-sizing: border-box; ">
+<section style="box-sizing: border-box; ">
 	<section style=" margin-top: 10px; margin-bottom: 10px;  box-sizing: border-box; ">
 		<section style="box-sizing: border-box; text-align: center;">
 			<section style="display: inline-block;vertical-align: top;padding: 8px 5px 5px 3px;width: 50%;box-sizing: border-box;border-right: 1px solid #66CCC5;">
 				<section style="box-sizing: border-box;">
 					<section style="margin-top: 0.5em; margin-bottom: 0.5em; box-sizing: border-box;">
-						<section style="box-sizing: border-box;width: 4em;height: 4em;display: inline-block;vertical-align: bottom;border-radius: 100%;background-image: url(&quot;http://mmbiz.qpic.cn/mmbiz/xpE6LLZTjLjZbC3icL0gxysDXhDQB9iaUPkFkZTfWxshdqfjuibeO84QQRovVcvYY4yhRLQPHusytjcicic7iav0GNvg/0?wx_fmt=jpeg&quot;);background-size: cover;background-position: 50% 50%;background-repeat: no-repeat;" class="">
+						<section style="box-sizing: border-box;width: 4em;height: 4em;display: inline-block;vertical-align: bottom;border-radius: 100%;background-image: url(&quot;https://mmbiz.qlogo.cn/mmbiz_jpg/VJsh0SqOtxMqOfDwFvzbz8Jt950hFWSRLpk0LZkJ8ur8EgEPv4Lib5tNBYF77LIh959Vht9BiclEpibWqiaic1gDuUw/0?wx_fmt=jpeg&quot;);background-size: cover;background-position: 50% 50%;background-repeat: no-repeat;" class="">
 							<br>
 						</section>
 
 						<p>
-							<span style="font-size: 14px;color: rgb(102, 204, 197);line-height: 1.6;">阿禅 Jason Ng</span>
+							<span style="font-size: 14px;color: rgb(102, 204, 197);line-height: 1.6;">GeekArtT</span>
 						</p>
 					</section>
 				</section>
@@ -187,7 +187,7 @@ From Jason Ng:
 
 **Rendered Display:**
 
-<section style="   box-sizing: border-box; "><section style=" margin-top: 10px; margin-bottom: 10px;  box-sizing: border-box; "><section style="box-sizing: border-box; text-align: center;"><section style="display: inline-block;vertical-align: top;padding: 8px 5px 5px 3px;width: 50%;box-sizing: border-box;border-right: 1px solid #66CCC5;"><section style="box-sizing: border-box;"><section style="margin-top: 0.5em; margin-bottom: 0.5em; box-sizing: border-box;"><section style="box-sizing: border-box;width: 4em;height: 4em;display: inline-block;vertical-align: bottom;border-radius: 100%;background-image: url(&quot;http://mmbiz.qpic.cn/mmbiz/xpE6LLZTjLjZbC3icL0gxysDXhDQB9iaUPkFkZTfWxshdqfjuibeO84QQRovVcvYY4yhRLQPHusytjcicic7iav0GNvg/0?wx_fmt=jpeg&quot;);background-size: cover;background-position: 50% 50%;background-repeat: no-repeat;" class=""><br></section><p><span style="font-size: 14px;color: rgb(102, 204, 197);line-height: 1.6;">阿禅 Jason Ng</span></p></section></section></section><section style="display: inline-block;vertical-align: top;padding: 6px;width: 50%;box-sizing: border-box;"><section style="box-sizing: border-box; border: 1px solid rgb(102, 204, 197); padding: 8px 5px; width: 120px; color: rgb(102, 204, 197); border-radius: 2px; margin: auto; line-height: 20px; font-size: 14px;"><p>读完本文<br>大约需要</p><section style="font-size: 30px;color:#666;line-height: 38px;">16</section>分钟</section></section></section></section></section>
+<section style="box-sizing: border-box; "><section style=" margin-top: 10px; margin-bottom: 10px;  box-sizing: border-box; "><section style="box-sizing: border-box; text-align: center;"><section style="display: inline-block;vertical-align: top;padding: 8px 5px 5px 3px;width: 50%;box-sizing: border-box;border-right: 1px solid #66CCC5;"><section style="box-sizing: border-box;"><section style="margin-top: 0.5em; margin-bottom: 0.5em; box-sizing: border-box;"><section style="box-sizing: border-box;width: 4em;height: 4em;display: inline-block;vertical-align: bottom;border-radius: 100%;background-image: url(&quot;https://mmbiz.qlogo.cn/mmbiz_jpg/VJsh0SqOtxMqOfDwFvzbz8Jt950hFWSRLpk0LZkJ8ur8EgEPv4Lib5tNBYF77LIh959Vht9BiclEpibWqiaic1gDuUw/0?wx_fmt=jpeg&quot;);background-size: cover;background-position: 50% 50%;background-repeat: no-repeat;" class=""><br></section><p><span style="font-size: 14px;color: rgb(102, 204, 197);line-height: 1.6;">GeekArtT</span></p></section></section></section><section style="display: inline-block;vertical-align: top;padding: 6px;width: 50%;box-sizing: border-box;"><section style="box-sizing: border-box; border: 1px solid rgb(102, 204, 197); padding: 8px 5px; width: 120px; color: rgb(102, 204, 197); border-radius: 2px; margin: auto; line-height: 20px; font-size: 14px;"><p>读完本文<br>大约需要</p><section style="font-size: 30px;color:#666;line-height: 38px;">16</section>分钟</section></section></section></section></section>
 
 ---
 
