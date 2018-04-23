@@ -1,5 +1,3 @@
-# Python Blind Points
-
 ---
 layout: post
 comments: true
@@ -10,7 +8,7 @@ mathjax: true
 ---
 
 
-### 2.1.1. Argument Passing[¶](#argument-passing)
+### 2.1.1. Argument Passing
 
 When known to the interpreter, the script name and additional arguments there after are turned into a list of strings and assigned to the `argv` variable in the `sys` module.
 
