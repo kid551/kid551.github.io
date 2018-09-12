@@ -1,6 +1,6 @@
 一组packets的传输过程:
 
-| 序号  | IP 1 | SYN/ACK/Length | IP 2 | Comment |
+| 序号  | Local IP | SYN/ACK/Length | Server IP | Comment |
 | ------------- | ---------- | ------------- | ------------- | ------------- |
 | 1 | 192.168.1.2 | ===> SYN | 174.143.213.18 | Seq = 0, Ack = 0 |
 | 2 | 192.168.1.2 | <=== SYN, ACK | 174.143.213.18 | Seq = 0, Ack = 1 |
