@@ -1,7 +1,7 @@
 # Site settings
 title: GeekArtT Tech Blog
-email: 
-description: "GeekArtT Tech Blog"
+email: ""
+description: "GeekArtT tech blog posts."
 baseurl: ""
 url: "http://kid551.github.io"
 github_username:  kid551
