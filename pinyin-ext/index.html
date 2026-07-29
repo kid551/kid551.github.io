@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>拼音注音标注 · Pinyin Ruby</title>
+    <style>
+      :root {
+        --ink: #1c1917;
+        --dim: #57534e;
+        --line: #e7e5e4;
+        --accent: #b45309;
+        --bg: #fff;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --ink: #ececec;
+          --dim: #a8a29e;
+          --line: #33302d;
+          --accent: #fbbf24;
+          --bg: #131211;
+        }
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0 auto;
+        max-width: 640px;
+        padding: 15vh 24px 96px;
+        background: var(--bg);
+        color: var(--ink);
+        font:
+          16px/1.75 -apple-system,
+          'PingFang SC',
+          'Segoe UI',
+          sans-serif;
+      }
+      .mark {
+        display: block;
+        width: 64px;
+        height: 64px;
+        border-radius: 14px;
+        margin-bottom: 24px;
+      }
+      h1 {
+        font-size: 27px;
+        margin: 0 0 4px;
+      }
+      .en {
+        color: var(--dim);
+        font-size: 15px;
+        letter-spacing: 0.06em;
+        margin: 0 0 22px;
+      }
+      p {
+        color: var(--dim);
+      }
+      ul {
+        padding-left: 20px;
+      }
+      li {
+        color: var(--dim);
+        margin: 5px 0;
+      }
+      a {
+        color: var(--accent);
+      }
+      footer {
+        margin-top: 44px;
+        padding-top: 18px;
+        border-top: 1px solid var(--line);
+        font-size: 14px;
+        color: var(--dim);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 图标内联为 SVG：这个仓库只放两个 HTML，不值得为一张图再建一层目录 -->
+    <svg class="mark" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+      <rect x="8" y="8" width="112" height="112" rx="24" fill="#007C83" />
+      <rect x="47" y="27" width="34" height="10" rx="3" fill="#FFB000" />
+      <path
+        fill-rule="evenodd"
+        d="M84 59C77 55 69 53 60 53C40 53 27 65 27 82C27 99 39 110 57 110C68 110 77 106 84 99V108H98V59H84ZM83 81C83 70 75 65 63 65C51 65 44 72 44 82C44 93 50 98 60 98C74 98 83 90 83 81Z"
+        fill="#F2F5F3"
+      />
+    </svg>
+
+    <h1>拼音注音标注</h1>
+    <p class="en">PINYIN RUBY · Chrome / Edge 扩展</p>
+
+    <p>
+      给网页里的汉字加上拼音或注音符号，字号与颜色自动跟随下方的汉字。原文一个字不改、一个字不丢，
+      关掉标注后页面精确还原。
+    </p>
+
+    <ul>
+      <li>拼音或注音符号（ㄅㄆㄇㄈ），声调可选调号、数字或不标</li>
+      <li>字号、间距、深浅、颜色、行距均可调</li>
+      <li>默认对所有站点关闭，按站点逐个开启</li>
+      <li>完全本地运行，不联网，不收集任何数据</li>
+    </ul>
+
+    <p><a href="privacy.html">隐私政策 / Privacy Policy</a></p>
+
+    <footer>
+      本页面用于承载本扩展的说明与隐私政策。问题与建议：<a
+        href="https://github.com/kid551/kid551.github.io/issues"
+        >GitHub Issues</a
+      >
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,358 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>隐私政策 · 拼音注音标注 | Privacy Policy · Pinyin Ruby</title>
+    <style>
+      :root {
+        --ink: #1c1917;
+        --dim: #57534e;
+        --line: #e7e5e4;
+        --brand: #007c83;
+        --accent: #b45309;
+        --card: #f7f6f4;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --ink: #ececec;
+          --dim: #a8a29e;
+          --line: #33302d;
+          --brand: #4fc3c9;
+          --accent: #fbbf24;
+          --card: #1c1a18;
+        }
+        body {
+          background: #131211;
+        }
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0 auto;
+        max-width: 760px;
+        padding: 56px 24px 96px;
+        font:
+          16px/1.75 -apple-system,
+          'PingFang SC',
+          'Segoe UI',
+          sans-serif;
+        color: var(--ink);
+      }
+      h1 {
+        font-size: 30px;
+        line-height: 1.3;
+        margin: 0 0 6px;
+      }
+      h2 {
+        font-size: 21px;
+        margin: 42px 0 12px;
+        padding-top: 20px;
+        border-top: 1px solid var(--line);
+      }
+      h3 {
+        font-size: 16px;
+        margin: 24px 0 8px;
+        color: var(--brand);
+      }
+      p,
+      li {
+        color: var(--dim);
+      }
+      strong {
+        color: var(--ink);
+      }
+      .meta {
+        font-size: 14px;
+        color: var(--dim);
+        margin: 0 0 28px;
+      }
+      .lede {
+        font-size: 17px;
+        color: var(--ink);
+        background: var(--card);
+        border-left: 3px solid var(--brand);
+        padding: 16px 20px;
+        border-radius: 0 8px 8px 0;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 14px 0;
+        font-size: 15px;
+      }
+      th,
+      td {
+        text-align: left;
+        padding: 9px 12px;
+        border-bottom: 1px solid var(--line);
+        vertical-align: top;
+      }
+      th {
+        color: var(--ink);
+        font-size: 13px;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+      }
+      td:first-child {
+        white-space: nowrap;
+        color: var(--ink);
+        font-weight: 600;
+      }
+      code {
+        font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+        font-size: 0.9em;
+        background: var(--card);
+        padding: 1px 5px;
+        border-radius: 4px;
+      }
+      a {
+        color: var(--accent);
+      }
+      .lang {
+        margin-top: 72px;
+        padding-top: 8px;
+      }
+      footer {
+        margin-top: 56px;
+        padding-top: 18px;
+        border-top: 1px solid var(--line);
+        font-size: 14px;
+        color: var(--dim);
+      }
+    </style>
+  </head>
+  <body>
+    <h1>隐私政策 · 拼音注音标注</h1>
+    <p class="meta">生效日期：2026 年 7 月 28 日 &nbsp;·&nbsp; 适用版本：0.1.0 及以后</p>
+
+    <p class="lede">
+      <strong>本扩展不收集、不存储、不传输任何个人数据。</strong>
+      它没有服务器，代码里没有任何一处发起网络请求；所有工作都在你自己的浏览器里完成。
+    </p>
+
+    <h2>一、我们不收集什么</h2>
+    <p>以下内容，本扩展<strong>一概不收集，也无处发送</strong>：</p>
+    <ul>
+      <li>你访问的网址、浏览历史、页面内容</li>
+      <li>身份信息、邮箱、账号、位置</li>
+      <li>使用统计、崩溃报告、分析数据（本扩展没有接入任何统计或分析 SDK）</li>
+      <li>Cookie、广告标识符</li>
+    </ul>
+    <p>
+      这一点<strong>你可以自己核实</strong>：扩展安装后，其全部代码都以可读文件的形式存放在本机
+      （Chrome 中打开 <code>chrome://version</code> 查看「个人资料路径」，进入
+      <code>Extensions</code> 下对应的目录），可以直接搜索
+      <code>fetch</code>、<code>XMLHttpRequest</code>、<code>WebSocket</code>、<code
+        >navigator.sendBeacon</code
+      >
+      —— 一处都不会找到。也可以在 <code>chrome://extensions</code> 中打开开发者模式、检查扩展视图，
+      在 DevTools 的 Network 面板里确认它从不发起任何请求。
+    </p>
+
+    <h2>二、本机保存了什么</h2>
+    <p>
+      扩展只使用 <code>chrome.storage.local</code>（浏览器本机存储）保存你的偏好设置。这些数据
+      <strong>仅存在于你的设备上</strong>，不会同步到任何服务器，也不会同步到你的其他设备。
+    </p>
+    <table>
+      <tr>
+        <th>保存的内容</th>
+        <th>用途</th>
+      </tr>
+      <tr>
+        <td>标注形式与声调</td>
+        <td>记住你选的是拼音还是注音、声调怎么显示</td>
+      </tr>
+      <tr>
+        <td>版式参数</td>
+        <td>字号、间距、深浅、颜色、行距</td>
+      </tr>
+      <tr>
+        <td>已开启的站点列表</td>
+        <td>
+          记住你在哪些网站的域名（如 <code>example.com</code>）上开启了标注。<strong
+            >只保存域名本身，不保存完整网址、页面标题或任何页面内容。</strong
+          >
+        </td>
+      </tr>
+    </table>
+    <p>
+      卸载扩展会一并删除这些数据。你也可以在扩展面板中点「恢复默认」重置外观设置，或在
+      <code>chrome://extensions</code> 中清除扩展数据。
+    </p>
+
+    <h2>三、页面内容是怎么处理的</h2>
+    <p>
+      为了给汉字加注音，扩展需要读取当前页面上的文字。这项工作<strong>完全在你的浏览器内存中完成</strong>：
+      读取文本 → 在本机查词库得到读音 → 就地插入 <code>&lt;ruby&gt;</code> 标注。
+      拼音词库随扩展一起打包在本地，查询不经过网络。
+    </p>
+    <p>
+      页面内容不会被保存到硬盘，不会被缓存，不会被发送到任何地方。关闭标注后，页面被精确还原为原样。
+    </p>
+
+    <h2>四、为什么需要这些权限</h2>
+    <table>
+      <tr>
+        <th>权限</th>
+        <th>用途</th>
+      </tr>
+      <tr>
+        <td><code>storage</code></td>
+        <td>本机保存上述偏好设置。</td>
+      </tr>
+      <tr>
+        <td><code>activeTab</code></td>
+        <td>
+          打开扩展面板时，读取当前标签页的域名，以便显示「在此站点显示注音」这个开关。当你在 Chrome
+          中把本扩展的站点访问权限设为「点击时」，这是扩展获取访问权的唯一途径。
+        </td>
+      </tr>
+      <tr>
+        <td><code>&lt;all_urls&gt;</code></td>
+        <td>
+          注音是一项可能在任何中文网页上使用的功能，无法预先列出网址清单，因此必须申请全站权限。
+          但<strong>默认对所有站点关闭</strong>——装上之后不会改动任何页面，需要你在面板里逐站开启，
+          或显式打开「在所有站点开启」。
+        </td>
+      </tr>
+    </table>
+
+    <h2>五、第三方</h2>
+    <p>
+      本扩展不含任何第三方服务、追踪器或广告。唯一的第三方代码是开源拼音词库
+      <a href="https://github.com/zh-lx/pinyin-pro">pinyin-pro</a>（MIT
+      许可），它以纯本地词典的形式打包在扩展内部，不产生任何网络通信。
+    </p>
+
+    <h2>六、变更与联系方式</h2>
+    <p>
+      本政策如有变更，将更新本页面并修改顶部的生效日期。有疑问或发现问题，请在
+      <a href="https://github.com/kid551/kid551.github.io/issues">GitHub Issues</a> 提出。
+    </p>
+
+    <!-- ─────────────────────────────────────────────── -->
+
+    <div class="lang" lang="en">
+      <h1>Privacy Policy · Pinyin Ruby</h1>
+      <p class="meta">Effective: 28 July 2026 &nbsp;·&nbsp; Applies to version 0.1.0 and later</p>
+
+      <p class="lede">
+        <strong>This extension collects, stores, and transmits no personal data.</strong>
+        It has no server, and its code contains no network calls of any kind. Everything happens
+        inside your own browser.
+      </p>
+
+      <h2>1. What we do not collect</h2>
+      <p>None of the following is collected, and there is nowhere for it to be sent:</p>
+      <ul>
+        <li>URLs you visit, browsing history, or page content</li>
+        <li>Identity, email, account, or location data</li>
+        <li>Usage statistics, crash reports, or analytics (no analytics SDK is bundled)</li>
+        <li>Cookies or advertising identifiers</li>
+      </ul>
+      <p>
+        <strong>You can verify this yourself.</strong> Once installed, all of the extension's code
+        sits on your machine as readable files (open <code>chrome://version</code>, find the
+        “Profile Path”, then look under <code>Extensions</code>); search them for
+        <code>fetch</code>, <code>XMLHttpRequest</code>, <code>WebSocket</code>, or
+        <code>navigator.sendBeacon</code> and you will not find one. You can also enable developer
+        mode on <code>chrome://extensions</code>, inspect the extension's views, and confirm in the
+        DevTools Network panel that it never makes a request.
+      </p>
+
+      <h2>2. What is stored on your device</h2>
+      <p>
+        The extension uses <code>chrome.storage.local</code> only, to remember your preferences.
+        This data <strong>never leaves your device</strong> — it is not synced to any server, nor to
+        your other devices.
+      </p>
+      <table>
+        <tr>
+          <th>Stored</th>
+          <th>Purpose</th>
+        </tr>
+        <tr>
+          <td>Annotation mode &amp; tone</td>
+          <td>Whether you chose pinyin or zhuyin, and how tones are shown</td>
+        </tr>
+        <tr>
+          <td>Typography settings</td>
+          <td>Size, spacing, opacity, color, line height</td>
+        </tr>
+        <tr>
+          <td>Enabled site list</td>
+          <td>
+            The hostnames (e.g. <code>example.com</code>) where you turned annotation on.
+            <strong
+              >Only the hostname is stored — never full URLs, page titles, or page content.</strong
+            >
+          </td>
+        </tr>
+      </table>
+      <p>
+        Uninstalling the extension deletes this data. You can also press “恢复默认 / Reset” in the
+        panel, or clear extension data from <code>chrome://extensions</code>.
+      </p>
+
+      <h2>3. How page content is handled</h2>
+      <p>
+        To annotate characters the extension must read the text on the current page. This happens
+        <strong>entirely in your browser's memory</strong>: read text → look up readings in a local
+        dictionary → insert <code>&lt;ruby&gt;</code> markup in place. The pinyin dictionary is
+        bundled with the extension; lookups never touch the network.
+      </p>
+      <p>
+        Page content is never written to disk, never cached, and never transmitted. Turning
+        annotation off restores the page exactly as it was.
+      </p>
+
+      <h2>4. Why each permission is needed</h2>
+      <table>
+        <tr>
+          <th>Permission</th>
+          <th>Purpose</th>
+        </tr>
+        <tr>
+          <td><code>storage</code></td>
+          <td>Saves the preferences described above, locally.</td>
+        </tr>
+        <tr>
+          <td><code>activeTab</code></td>
+          <td>
+            When the popup opens, reads the current tab's hostname so the per-site toggle can be
+            shown. If you set this extension's site access to “on click”, this is the only way it
+            gains access at all.
+          </td>
+        </tr>
+        <tr>
+          <td><code>&lt;all_urls&gt;</code></td>
+          <td>
+            Ruby annotation is useful on any Chinese-language page, so no fixed list of sites can be
+            declared. However it is <strong>off for every site by default</strong> — installing it
+            changes no page until you enable a site in the panel, or explicitly turn on “all sites”.
+          </td>
+        </tr>
+      </table>
+
+      <h2>5. Third parties</h2>
+      <p>
+        There are no third-party services, trackers, or ads. The only third-party code is the
+        open-source pinyin dictionary
+        <a href="https://github.com/zh-lx/pinyin-pro">pinyin-pro</a> (MIT), bundled as a purely
+        local dictionary with no network activity.
+      </p>
+
+      <h2>6. Changes &amp; contact</h2>
+      <p>
+        Changes to this policy will be published on this page with an updated effective date.
+        Questions or problems:
+        <a href="https://github.com/kid551/kid551.github.io/issues">GitHub Issues</a>.
+      </p>
+    </div>
+
+    <footer>拼音注音标注 / Pinyin Ruby</footer>
+  </body>
+</html>
